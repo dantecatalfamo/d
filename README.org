@@ -12,3 +12,15 @@ Commands:
   cd      Change to a project directory under ~/src
   clone   Clone a repository into ~/src according to the site, user, and project
 #+END_SRC
+
+* Example
+  Running ~repo clone https://github.com/dantecatalfamo/repo~ would
+  clone https://github.com/dantecatalfamo/repo into the directory
+  =~/src/github.com/dantecatalfamo/repo=, then change to that
+  directory.
+
+  Running ~repo cd repo~ changes to
+  =~/src/github.com/dantecatalfamo/repo= if it's the only directory
+  that matches that query. Otherwise it displays a list of projects
+  matching that pattern, allowing the user to select the desired
+  project. The query is matches against the entire path after =~src/=.
