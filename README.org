@@ -14,13 +14,12 @@ Commands:
 #+END_SRC
 
 * Example
-  Running ~repo clone https://github.com/dantecatalfamo/repo~ would
-  clone https://github.com/dantecatalfamo/repo into the directory
-  =~/src/github.com/dantecatalfamo/repo=, then change to that
-  directory.
+  - ~repo clone https://github.com/dantecatalfamo/repo~
+    - clone https://github.com/dantecatalfamo/repo into =~/src/github.com/dantecatalfamo/repo=
+    - change to the new project directory
 
-  Running ~repo cd repo~ changes to
-  =~/src/github.com/dantecatalfamo/repo= if it's the only directory
-  that matches that query. Otherwise it displays a list of projects
-  matching that pattern, allowing the user to select the desired
-  project. The query is matches against the entire path after =~src/=.
+  - ~repo cd repo~
+    - Compare the query =repo= to all of the paths under =~/src=
+      - If no matches, display error and do nothing
+      - If only one matches, change to the directory
+      - If multiple matches, display matches and let user choose
