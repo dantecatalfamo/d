@@ -3,6 +3,9 @@
 A small tool written to help manage the my =~/src= directory.
 Written in [[https://raku.org/][raku]] as an exercise.
 
+Works on with any git hosting site with a ~example.com/user/repo~ URL
+scheme, either over SSH or HTTPS.
+
 * Usage
 
 #+BEGIN_SRC
