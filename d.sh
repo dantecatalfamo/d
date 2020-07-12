@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dhome="~/src/github.com/dantecatalfamo/d/"
+dhome=~/src/github.com/dantecatalfamo/d
 
 function d {
     case $1 in
