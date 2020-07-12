@@ -1,0 +1,14 @@
+* Repo
+
+A small tool written to help manage the my =~/src= directory.
+Written in [[https://raku.org/][raku]] as an exercise.
+
+* Usage
+
+#+BEGIN_SRC
+usage: repo <command> [<args>]
+
+Commands:
+  cd      Change to a project directory under ~/src
+  clone   Clone a repository into ~/src according to the site, user, and project
+#+END_SRC
