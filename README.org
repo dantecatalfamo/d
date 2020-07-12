@@ -23,3 +23,12 @@ Commands:
       - If no matches, display error and do nothing
       - If only one matches, change to the directory
       - If multiple matches, display matches and let user choose
+
+* Installation
+
+  - Clone this repo, into =~/src/github.com/dantecatalfamo/repo= for example.
+  - Add this to your shell startup file. For bash that's =~/.bashrc=
+    #+BEGIN_SRC shell
+    source /home/dante/src/github.com/dantecatalfamo/repo/repo.sh
+    #+END_SRC
+  - That's it.
