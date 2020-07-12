@@ -11,9 +11,17 @@ function d {
             d-cd $@
             ;;
         *)
-            echo "Not implimented"
+            d-usage
             ;;
     esac
+}
+
+function d-usage {
+    echo "usage: d <command> [<args>]"
+    echo
+    echo "Commands:"
+    echo "  cd      Change to a project directory under ~/src"
+    echo "  clone   Clone a repository into ~/src according to the site, user, and project"
 }
 
 function d-clone {
