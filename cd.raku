@@ -10,10 +10,13 @@ sub MAIN($search? = '') {
     my @paths;
     my @sites = dir;
     for @sites -> $site {
+        next if !$site.d;
         my @users = dir $site;
         for @users -> $user {
+            next if !$user.d;
             my @projects = dir $user;
             for @projects -> $project {
+                next if !$project.d;
                 @paths.push($project);
             }
         }
