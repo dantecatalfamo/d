@@ -7,12 +7,20 @@ enum Exits (
 );
 
 sub MAIN($url) {
-    $url ~~ /
-    [ ["http" s? "://" || "git@" .* ":"] ]?
-    $<site>=(<[a..zA..Z0..9\.\-_]>+) '/'
-    $<user>=(<[a..zA..Z0..9~\-_]>+) '/'
-    $<repo>=(<[a..zA..Z0..9~\-_]>+)
-    ".git"? /;
+    my $ssh = ?($url ~~ / ^"git@" /);
+    my $http-regex = /
+        ["http" s? "://"]?
+        $<site>=(<[a..zA..Z0..9\.\-_]>+) '/'
+        $<user>=(<[a..zA..Z0..9~\.\-_]>+) '/'
+        $<repo>=(<[a..zA..Z0..9~\.\-_]>+)
+    /;
+    my $ssh-regex = /
+        "git@"
+        $<site>=(.+?) ":"
+        $<user>=(<[a..zA..Z0..9~\.\-_]>+) '/'
+        $<repo>=(<[a..zA..Z0..9~\.\-_]>+)
+    /;
+    $url ~~ ($ssh ?? $ssh-regex !! $http-regex);
     if  !$<site> || !$<user> || !$<repo> {
         note "URL structure not supported";
         exit(Error);
