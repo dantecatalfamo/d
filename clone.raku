@@ -12,13 +12,15 @@ sub MAIN($url) {
         ["http" s? "://"]?
         $<site>=(<[a..zA..Z0..9\.\-_]>+) '/'
         $<user>=(<[a..zA..Z0..9~\.\-_]>+) '/'
-        $<repo>=(<[a..zA..Z0..9~\.\-_]>+)
+        $<repo>=(<[a..zA..Z0..9~\.\-_]>+?)
+        '.git'? '/'? $
     /;
     my $ssh-regex = /
         "git@"
         $<site>=(.+?) ":"
         $<user>=(<[a..zA..Z0..9~\.\-_]>+) '/'
-        $<repo>=(<[a..zA..Z0..9~\.\-_]>+)
+        $<repo>=(<[a..zA..Z0..9~\.\-_]>+?)
+        '.git'? '/'? $
     /;
     $url ~~ ($ssh ?? $ssh-regex !! $http-regex);
     if  !$<site> || !$<user> || !$<repo> {
