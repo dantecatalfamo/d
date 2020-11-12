@@ -38,7 +38,10 @@ sub MAIN($url) {
     chdir $user-dir;
 
     my $ret = run("git", "clone", $url).exitcode;
-    exit(Error) if $ret != 0;
+    if $ret != 0 {
+        note "Git clone failed";
+        exit(Error);
+    }
 
     put $project-dir;
     exit(Success);
